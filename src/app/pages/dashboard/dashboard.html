@@ -17,25 +17,24 @@
   </div>
 
   <!-- STATS -->
-  <div class="stats-grid" *ngIf="!loadingCounters">
-    <div class="stat-card" (click)="openTasks('pending')">
-      <span class="label">Pending</span>
-      <span class="value">{{ counters.pending }}</span>
-    </div>
-
-    <div class="stat-card" (click)="openTasks('wip')">
-      <span class="label">In Progress</span>
-      <span class="value">{{ counters.wip }}</span>
-    </div>
-
-    <div class="stat-card" (click)="openTasks('completed')">
-      <span class="label">Completed</span>
-      <span class="value">{{ counters.completed }}</span>
-    </div>
-
-    <div class="stat-card danger" (click)="openTasks('overdue')">
-      <span class="label">Overdue</span>
-      <span class="value">{{ counters.overdue }}</span>
+  <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+    <div class="stats-grid" *ngIf="!loadingCounters">
+      <div class="stat-card" (click)="openTasks('pending')">
+        <span class="label">Pending</span>
+        <span class="value">{{ counters.pending }}</span>
+      </div>
+      <div class="stat-card" (click)="openTasks('wip')">
+        <span class="label">In Progress</span>
+        <span class="value">{{ counters.wip }}</span>
+      </div>
+      <div class="stat-card" (click)="openTasks('completed')">
+        <span class="label">Completed</span>
+        <span class="value">{{ counters.completed }}</span>
+      </div>
+      <div class="stat-card danger" (click)="openTasks('overdue')">
+        <span class="label">Overdue</span>
+        <span class="value">{{ counters.overdue }}</span>
+      </div>
     </div>
   </div>
 
