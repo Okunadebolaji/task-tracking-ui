@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h3 class="text-primary mb-4">Assign Teams to Project</h3>
+
+  <!-- Project -->
+  <div class="mb-3">
+    <label class="form-label">Project</label>
+    <select class="form-select"
+            [(ngModel)]="selectedProjectId"
+            (ngModelChange)="onProjectChange($event)">
+      <option [ngValue]="null" disabled>Select project</option>
+      <option *ngFor="let p of projects" [ngValue]="p.id">
+        {{ p.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Team -->
+  <div class="mb-3">
+    <label class="form-label">Team</label>
+    <select class="form-select"
+            [(ngModel)]="selectedTeamId">
+      <option [ngValue]="null" disabled>Select team</option>
+      <option *ngFor="let t of allTeams" [ngValue]="t.id">
+        {{ t.name }}
+      </option>
+    </select>
+  </div>
+
+  <button class="btn btn-success"
+          (click)="assignTeamToProject()"
+          [disabled]="!selectedProjectId || !selectedTeamId">
+    Assign Team
+  </button>
+
+  <hr />
+
+  <h5 class="mt-4">Teams in this Project</h5>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let t of projectTeams">
+      {{ t.name }}
+    </li>
+  </ul>
+</div>

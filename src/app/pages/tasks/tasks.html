@@ -1,0 +1,104 @@
+<div class="">
+  <h3>Create Task</h3>
+  <div class="row g-3">
+
+    <!-- Project -->
+    <div class="col-md-4">
+      <label class="form-label">Project *</label>
+      <select class="form-select"
+              [(ngModel)]="taskForm.projectId"
+              (ngModelChange)="onProjectChange($event)"
+              required>
+        <option [ngValue]="null" disabled>Select project</option>
+        <option *ngFor="let p of projects" [ngValue]="p.id">{{ p.name }}</option>
+      </select>
+    </div>
+
+    <!-- Team -->
+    <div class="col-md-4">
+      <label class="form-label">Team *</label>
+      <select class="form-select"
+              [(ngModel)]="taskForm.teamId"
+              (ngModelChange)="onTeamChange($event)"
+              required>
+        <option [ngValue]="null" disabled>Select team</option>
+        <option *ngFor="let t of teams" [ngValue]="t.id">{{ t.name }}</option>
+      </select>
+    </div>
+
+    <!-- Team Members -->
+    <div class="col-md-6">
+      <label class="form-label">Assign Team Members</label>
+      <select multiple class="form-select" [(ngModel)]="taskForm.assignedUserIds">
+        <option *ngFor="let u of teamUsers" [ngValue]="u.id">{{ u.fullName }}</option>
+      </select>
+    </div>
+
+    <!-- Module -->
+    <div class="col-md-4">
+      <label class="form-label">Module *</label>
+      <select class="form-select" [(ngModel)]="taskForm.module" required>
+        <option [ngValue]="null" disabled>Select Module</option>
+        <option value="frontend">Frontend</option>
+        <option value="backend">Backend</option>
+      </select>
+    </div>
+
+    <!-- Linked Requirements -->
+    <div class="col-12">
+      <label class="form-label">Linked Requirements</label>
+      <select multiple class="form-select" [(ngModel)]="taskForm.requirementIds">
+        <option *ngFor="let r of requirements" [ngValue]="r.id">{{ r.requirement }}</option>
+      </select>
+    </div>
+
+    <!-- User Story -->
+    <div class="col-12">
+      <label class="form-label">User Story</label>
+      <textarea class="form-control" rows="3"
+                [(ngModel)]="taskForm.userStory"
+                placeholder="As a [role], I want [feature] so that [benefit]"></textarea>
+    </div>
+
+    <!-- Description -->
+    <div class="col-12">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" rows="3" [(ngModel)]="taskForm.description"></textarea>
+    </div>
+
+    <!-- Comment -->
+    <div class="col-12">
+      <label class="form-label">Comment</label>
+      <textarea class="form-control" rows="2" [(ngModel)]="taskForm.comment"></textarea>
+    </div>
+
+    <!-- Dates -->
+    <div class="col-md-6">
+      <label class="form-label">Start Date</label>
+      <input type="date" class="form-control" [(ngModel)]="taskForm.startDate">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">End Date</label>
+      <input type="date" class="form-control" [(ngModel)]="taskForm.endDate">
+    </div>
+
+    <!-- Status -->
+    <div class="col-md-4">
+      <label class="form-label">Status *</label>
+      <select class="form-select" [(ngModel)]="taskForm.statusId" required>
+        <option [ngValue]="undefined" disabled>Select status</option>
+        <option *ngFor="let s of statuses" [ngValue]="s.id">{{ s.name }}</option>
+      </select>
+    </div>
+
+    <!-- Submit -->
+    <div class="col-12 text-end">
+      <button class="btn btn-primary"
+              [disabled]="!taskForm.projectId || !taskForm.teamId || !taskForm.statusId"
+              (click)="createTask()">
+        Create Task
+      </button>
+    </div>
+
+  </div>
+</div>

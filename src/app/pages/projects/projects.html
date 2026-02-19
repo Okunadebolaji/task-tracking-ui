@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="text-primary">Projects</h4>
+    <button class="btn btn-primary" (click)="addProject()">
+      <i class="bi bi-plus-circle"></i> Add Project
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <div *ngIf="!loading && projects.length === 0" class="text-center py-4 text-muted">
+    No projects found
+  </div>
+
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-6 mb-3" *ngFor="let project of projects">
+      <div class="card shadow-sm h-100 project-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.name }}</h5>
+          <p class="card-text text-truncate">{{ project.description }}</p>
+
+          <div class="d-flex justify-content-between mt-3">
+            <div>
+              <span class="badge bg-success me-1">Completed: {{ project.completedCount }}</span>
+              <span class="badge bg-warning text-dark me-1">Pending: {{ project.pendingCount }}</span>
+              <span class="badge bg-danger">Rejected: {{ project.rejectedCount }}</span>
+            </div>
+
+            <div>
+              <button class="btn btn-sm btn-outline-primary me-1"
+                      (click)="editProject(project.id)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger"
+                      (click)="deleteProject(project.id)" >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

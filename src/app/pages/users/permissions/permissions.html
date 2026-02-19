@@ -1,0 +1,36 @@
+<div class="mb-3">
+  <label class="form-label">Select Role</label>
+  <select
+    class="form-select"
+    [(ngModel)]="selectedRoleId"
+    (change)="onRoleChange()">
+    <option [ngValue]="null">-- Select Role --</option>
+    <option *ngFor="let role of roles" [ngValue]="role.id">
+      {{ role.name }}
+    </option>
+  </select>
+</div>
+
+<table class="table table-bordered" *ngIf="permissions.length">
+  <thead>
+    <tr>
+      <th>Permission</th>
+      <th class="text-center">Allowed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let perm of permissions">
+      <td>{{ perm.name }}</td>
+      <td class="text-center">
+        <input type="checkbox" [(ngModel)]="perm.isAllowed" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+  class="btn btn-primary mt-3"
+  (click)="savePermissions()"
+  [disabled]="!selectedRoleId">
+  Save Permissions
+</button>

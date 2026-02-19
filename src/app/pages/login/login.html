@@ -1,0 +1,52 @@
+<div class="auth-container">
+  <div class="card shadow-sm p-4">
+    <h3 class="text-center mb-3">Login</h3>
+
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+
+       <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          email
+          #emailCtrl="ngModel"
+        />
+        <small class="text-danger" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+          Valid email is required
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          maxlength="10"
+          #passwordCtrl="ngModel"
+        />
+        <small class="text-danger" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+          Password is required
+        </small>
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit"
+              [disabled]="loginForm.invalid || loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/superadmin-signup" class="text-decoration-none">
+      Create Account (Super Admin)
+      </a>
+    </div>
+  </div>
+</div>

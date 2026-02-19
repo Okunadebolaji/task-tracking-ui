@@ -1,0 +1,9 @@
+<div class="d-flex">
+  <!-- Sidebar -->
+  <app-sidebar *ngIf="showSidebar()"></app-sidebar>
+
+  <!-- Main content -->
+  <div class="flex-grow-1 p-3 main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

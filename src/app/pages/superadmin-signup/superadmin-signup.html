@@ -1,0 +1,56 @@
+<div class="auth-container">
+  <div class="card shadow-sm p-4">
+
+    <h3 class="text-center mb-1">Company Setup</h3>
+    <p class="text-center text-muted mb-4">
+      Create the first Super Admin
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <!-- Company Name -->
+      <div class="mb-3">
+        <label class="form-label">Company Name</label>
+        <input class="form-control" formControlName="companyName">
+      </div>
+
+
+
+
+      <!-- First & Last Name -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">First Name</label>
+          <input class="form-control" formControlName="firstName">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Last Name</label>
+          <input class="form-control" formControlName="lastName">
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input class="form-control" type="email" formControlName="email">
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        [disabled]="loading || companyHasAdmin || form.invalid"
+        class="btn btn-success w-100">
+        {{ loading ? 'Creating...' : 'Create Super Admin' }}
+      </button>
+
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none">
+        Login Instead
+      </a>
+    </div>
+
+  </div>
+</div>

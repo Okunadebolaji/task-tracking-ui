@@ -1,0 +1,42 @@
+<h3>Edit Requirement</h3>
+
+<div class="mb-3">
+  <label>Project</label>
+ <select class="form-select" [(ngModel)]="form.projectId">
+
+    <option [ngValue]="null">Select Project</option>
+    <option *ngFor="let p of projects" [ngValue]="p.id">{{ p.name }}</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label>Module</label>
+  <input type="text" class="form-control" [(ngModel)]="form.module">
+</div>
+
+<div class="mb-3">
+  <label>Menu</label>
+  <input type="text" class="form-control" [(ngModel)]="form.menu">
+</div>
+
+<div class="mb-3">
+  <label>Requirement</label>
+  <textarea class="form-control" [(ngModel)]="form.requirement"></textarea>
+</div>
+
+<div class="mb-3">
+  <label>Category</label>
+  <input type="text" class="form-control" [(ngModel)]="form.category">
+</div>
+
+<div class="mb-3">
+  <label>Baseline</label>
+  <input type="number" class="form-control" [(ngModel)]="form.baseline">
+</div>
+
+<div class="mb-3">
+  <label>Status</label>
+  <input type="text" class="form-control" [(ngModel)]="form.status">
+</div>
+
+<button class="btn btn-success" (click)="save()">Update</button>

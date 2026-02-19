@@ -1,0 +1,17 @@
+<div class="p-3">
+  <h4>Rejected Tasks</h4>
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr><th>Description</th><th>Project</th><th>Team</th><th>Rejected By</th><th>Rejected Date</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.description }}</td>
+        <td>{{ t.projectName }}</td>
+        <td>{{ t.teamName }}</td>
+        <td>{{ t.rejectedByName || '—' }}</td>
+        <td>{{ t.rejectedDate | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

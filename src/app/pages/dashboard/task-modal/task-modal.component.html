@@ -1,0 +1,41 @@
+<div class="modal-backdrop">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h5>{{ title }}</h5>
+      <button class="btn-close" (click)="closeModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div *ngIf="loading">Loading tasks...</div>
+
+      <table class="table table-striped" *ngIf="!loading">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Project</th>
+            <th>Status</th>
+            <th>Assigned Team</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.title }}</td>
+            <td>{{ task.projectName }}</td>
+            <td>{{ task.statusName }}</td>
+            <td>{{ task.teamName || '—' }}</td>
+            <td>{{ task.dueDate | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="!loading && tasks.length === 0" class="text-muted">
+        No tasks found
+      </div>
+
+    </div>
+  </div>
+</div>

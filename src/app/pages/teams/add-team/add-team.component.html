@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h4 class="text-primary">{{ teamId ? 'Edit Team' : 'Add Team' }}</h4>
+  <form (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label class="form-label">Team Name</label>
+      <input type="text" class="form-control" [(ngModel)]="name" name="name" />
+    </div>
+ <div class="mb-3">
+  <label class="form-label">Max Team Members</label>
+  <input type="number" class="form-control" [(ngModel)]="maxMembers" name="maxMembers" min="5" max="10" />
+  <small class="text-muted">Must be between 5 and 10</small>
+</div>
+
+    <button type="submit" class="btn btn-success">
+      {{ teamId ? 'Update' : 'Create' }} Team
+    </button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="router.navigate(['/teams'])">Cancel</button>
+  </form>
+</div>

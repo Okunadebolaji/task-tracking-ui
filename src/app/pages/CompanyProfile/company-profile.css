@@ -1,0 +1,57 @@
+/* Card background gradient */
+.profile-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Header gradient with icon */
+.profile-header {
+  background: linear-gradient(135deg, #6f42c1, #0d6efd);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* View mode info boxes */
+.info-row {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Buttons hover effects */
+.btn-light {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.btn-light:hover {
+  color: #fff;
+  background-color: #0d6efd;
+}
+
+/* Save button highlight */
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+  border-color: #146c43;
+}
+
+/* Cancel button outline hover */
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+}
+
+/* Spinner size */
+.spinner-lg {
+  width: 3rem;
+  height: 3rem;
+}

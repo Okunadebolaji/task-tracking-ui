@@ -1,0 +1,65 @@
+<div class="container my-5">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card profile-card shadow-lg">
+
+        <!-- Card Header -->
+        <div class="card-header profile-header text-white d-flex justify-content-between align-items-center">
+          <h4 class="mb-0"><i class="bi bi-building me-2"></i>Company Profile</h4>
+          <button class="btn btn-light btn-sm" (click)="openEdit()" *ngIf="!editing">
+            <i class="bi bi-pencil"></i> Edit
+          </button>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+
+          <!-- Loading Spinner -->
+          <div *ngIf="loading" class="text-center py-4">
+            <div class="spinner-border text-warning spinner-lg"></div>
+          </div>
+
+          <!-- View Mode -->
+          <div *ngIf="!loading && !editing">
+            <div class="info-row mb-3 p-3 rounded shadow-sm bg-light">
+              <div class="d-flex justify-content-between">
+                <strong>Name:</strong>
+                <span>{{ company.name }}</span>
+              </div>
+            </div>
+
+            <div class="info-row mb-3 p-3 rounded shadow-sm bg-light">
+              <div class="d-flex justify-content-between">
+                <strong>Code:</strong>
+                <span>{{ company.code }}</span>
+              </div>
+            </div>
+
+            <div class="info-row mb-3 p-3 rounded shadow-sm bg-light">
+              <div class="d-flex justify-content-between">
+                <strong>Created At:</strong>
+                <span>{{ company.createdAt | date:'medium' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Edit Mode -->
+          <div *ngIf="editing">
+            <div class="mb-3">
+              <label class="form-label fw-bold">Company Name</label>
+              <input type="text" class="form-control form-control-lg" [(ngModel)]="newName" />
+            </div>
+            <div class="d-flex justify-content-end gap-2 mt-3">
+              <button class="btn btn-outline-secondary" (click)="closeEdit()">Cancel</button>
+              <button class="btn btn-success" (click)="save()">Save</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

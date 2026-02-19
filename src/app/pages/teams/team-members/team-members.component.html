@@ -1,0 +1,63 @@
+<div class="container mt-4">
+
+  <h4 class="text-primary mb-3">Team Members</h4>
+
+  <!-- TEAM SELECT -->
+  <div class="mb-4">
+    <label class="form-label fw-bold">Select Team</label>
+    <select class="form-select" [(ngModel)]="selectedTeamId" (change)="onTeamChange()">
+  <option [ngValue]="null">-- Select Team --</option>
+  <option *ngFor="let t of teams" [ngValue]="t.id">
+    {{ t.name }}
+  </option>
+</select>
+
+  </div>
+
+  <div *ngIf="selectedTeamId">
+
+    <p class="text-muted">
+      Members: {{ teamMembers.length }} / {{ maxMembers }}
+    </p>
+
+    <div *ngIf="!canAddMore" class="alert alert-warning">
+      Team member limit reached
+    </div>
+
+    <div class="row">
+
+      <!-- AVAILABLE USERS -->
+      <div class="col-md-6">
+        <h6 class="text-success">Available Users</h6>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let u of availableUsers">
+            {{ u.fullName }} ({{ u.email }})
+            <button class="btn btn-sm btn-outline-success"
+                    [disabled]="!canAddMore"
+                    (click)="addUser(u.id)">
+              <i class="bi bi-plus"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- TEAM MEMBERS -->
+      <div class="col-md-6">
+        <h6 class="text-danger">Team Members</h6>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let m of teamMembers">
+            {{ m.fullName }} ({{ m.email }})
+            <button class="btn btn-sm btn-outline-danger"
+                    (click)="removeUser(m.userTeamId)">
+              <i class="bi bi-x"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>

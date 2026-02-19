@@ -1,0 +1,35 @@
+<p>requirements works!</p>
+<div class="container mt-3">
+  <h3>Requirements</h3>
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <table *ngIf="!loading && requirements.length > 0" class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Module</th>
+        <th>Menu</th>
+        <th>Requirement</th>
+        <th>Category</th>
+        <th>Baselinejj</th>
+        <th>Status</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let req of requirements">
+        <td>{{ req.module }}</td>
+        <td>{{ req.menu }}</td>
+        <td>{{ req.requirement }}</td>
+        <td>{{ req.category }}</td>
+        <td>{{ req.baseline }}</td>
+        <td>{{ req.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && requirements.length === 0" class="alert alert-info mt-3">
+    No requirements found.
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+<div class="p-3">
+  <h4>Pending Approval Tasks</h4>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Project</th>
+        <th>Team</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.description }}</td>
+        <td>{{ t.project?.name }}</td>
+        <td>{{ t.team?.name }}</td>
+          <button *ngIf="approve" class="btn btn-success btn-sm" (click)="approve(t.id)">
+      Approve
+      </button>
+
+<button *ngIf="reject"
+        class="btn btn-danger btn-sm"
+        (click)="reject(t.id)">
+  Reject
+</button>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="text-primary">Teams</h4>
+    <button class="btn btn-primary" (click)="addTeam()">
+      <i class="bi bi-plus-circle"></i> Add Team
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <div *ngIf="!loading && teams.length === 0" class="text-center py-4 text-muted">
+    No teams found
+  </div>
+
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-6 mb-3" *ngFor="let team of teams">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ team.name }}</h5>
+          <p class="card-text">Status: {{ team.isActive ? 'Active' : 'Inactive' }}</p>
+          <div class="d-flex justify-content-end gap-2 mt-2">
+            <button class="btn btn-sm btn-outline-primary" (click)="editTeam(team.id)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="manageMembers(team.id)">
+              <i class="bi bi-people-fill"></i>
+            </button>
+            <!-- <button ... (click)="onDeleteClick(team)">...</button> -->
+
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteTeamById(team.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
