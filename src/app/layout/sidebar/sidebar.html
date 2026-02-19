@@ -1,4 +1,6 @@
-<nav class="sidebar vh-100 text-white p-3">
+<nav class="sidebar vh-100 text-white p-3"
+     [class.open]="isOpen">
+
   <h5 class="text-center mb-4 border-bottom pb-2">Task Tracker</h5>
 
   <ul class="nav flex-column">
@@ -25,7 +27,7 @@
         <li class="nav-item mb-1" *ngFor="let child of menu.children">
           <a class="nav-link text-white small d-flex justify-content-between align-items-center"
              [routerLink]="child.route"
-             routerLinkActive="active">
+             routerLinkActive="active" (click)="closeSidebar()">
             {{ child.name }}
             <i *ngIf="child.icon" class="bi {{ child.icon }} ms-2"></i>
           </a>

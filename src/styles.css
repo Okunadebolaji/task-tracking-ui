@@ -7,3 +7,14 @@ html, body {
 .container-fluid {
   max-width: 100%;
 }
+img, table {
+  max-width: 100%;
+}
+
+.card {
+  word-wrap: break-word;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}

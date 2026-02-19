@@ -13,16 +13,16 @@
       </div>
       <div class="modal-body">
         <form #userForm="ngForm">
-          <div class="mb-2">
+          <div class="mb-2 col-md-4 col-12">
             <input type="text" [(ngModel)]="selectedUser.firstName" name="firstName" placeholder="First Name" class="form-control"/>
           </div>
-          <div class="mb-2">
+          <div class="mb-2 col-md-4 col-12">
             <input type="text" [(ngModel)]="selectedUser.lastName" name="lastName" placeholder="Last Name" class="form-control"/>
           </div>
-          <div class="mb-2">
+          <div class="mb-2 col-md-4 col-12">
             <input type="email" [(ngModel)]="selectedUser.email" name="email" placeholder="Email" class="form-control"/>
           </div>
-          <div class="mb-2">
+          <div class="mb-2 col-md-4 col-12">
             <select class="form-select" [(ngModel)]="selectedUser.roleId" name="roleId" required>
               <option [value]="null">Select Role</option>
               <option *ngFor="let role of usersService.roles" [value]="role.id">{{ role.name }}</option>
@@ -39,24 +39,26 @@
 </div>
 
 <!-- Users Table -->
-<table class="table table-striped mt-3">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.fullName }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.role.name }}</td>
-      <td>
-        <button class="btn btn-warning btn-sm" (click)="openEditUser(user)" *ngIf="permissions.canEdit">Edit</button>
-        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser(user.id)" *ngIf="permissions.canDelete">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role.name }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="openEditUser(user)" *ngIf="permissions.canEdit">Edit</button>
+          <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser(user.id)" *ngIf="permissions.canDelete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

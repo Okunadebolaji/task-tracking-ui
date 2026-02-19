@@ -1,6 +1,18 @@
 <div class="layout">
-  <app-sidebar></app-sidebar>
+
+  <!-- Mobile Toggle Button -->
+  <button class="mobile-toggle btn btn-dark d-lg-none"
+          (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <app-sidebar
+    [isOpen]="isSidebarOpen"
+    (close)="closeSidebar()">
+  </app-sidebar>
+
   <div class="content">
     <router-outlet></router-outlet>
   </div>
+
 </div>

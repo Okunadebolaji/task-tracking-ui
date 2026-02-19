@@ -4,6 +4,7 @@ import { RouterModule,Router } from '@angular/router';
 import { MenuService } from '../../services/menu.service';
 import { AuthService } from '../../services/auth';
 import { Menu } from '../../Models/menu.model';
+import { Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,10 +13,13 @@ import { Menu } from '../../Models/menu.model';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
+
+
 export class SidebarComponent implements OnInit {
 
   menus: Menu[] = [];
-
+@Input() isOpen = false;
+@Output() close = new EventEmitter<void>();
   constructor(
     private menuService: MenuService,
     private auth: AuthService,
@@ -34,6 +38,9 @@ export class SidebarComponent implements OnInit {
   });
 }
 
+closeSidebar() {
+  this.close.emit();
+}
 
   toggle(menu: Menu) {
     menu.expanded = !menu.expanded;

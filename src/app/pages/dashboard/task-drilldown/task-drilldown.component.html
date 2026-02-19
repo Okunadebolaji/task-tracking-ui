@@ -4,31 +4,32 @@
     {{ type }} tasks
   </h4>
 
-  <table class="table table-striped" *ngIf="tasks.length">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Project</th>
-        <th>Assigned To</th>
-        <th>Status</th>
-        <th>Due Date</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let t of tasks">
-        <td>{{ t.title }}</td>
-        <td>{{ t.projectName }}</td>
-        <td>{{ t.assignedUserName }}</td>
-        <td>
-          <span class="badge bg-secondary">
-            {{ t.status }}
-          </span>
-        </td>
-        <td>{{ t.dueDate | date }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped" *ngIf="tasks.length">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Project</th>
+          <th>Assigned To</th>
+          <th>Status</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tasks">
+          <td>{{ t.title }}</td>
+          <td>{{ t.projectName }}</td>
+          <td>{{ t.assignedUserName }}</td>
+          <td>
+            <span class="badge bg-secondary">
+              {{ t.status }}
+            </span>
+          </td>
+          <td>{{ t.dueDate | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <p *ngIf="!tasks.length && !loading" class="text-muted">
     No records found

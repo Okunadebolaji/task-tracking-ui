@@ -10,27 +10,28 @@
 
       <div *ngIf="loading">Loading tasks...</div>
 
-      <table class="table table-striped" *ngIf="!loading">
-        <thead>
-          <tr>
-            <th>Module</th>
-            <th>Project</th>
-            <th>Status</th>
-            <th>Assigned Team</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let task of tasks">
-            <td>{{ task.title }}</td>
-            <td>{{ task.projectName }}</td>
-            <td>{{ task.statusName }}</td>
-            <td>{{ task.teamName || '—' }}</td>
-            <td>{{ task.dueDate | date }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped" *ngIf="!loading">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Assigned Team</th>
+              <th>Due Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks">
+              <td>{{ task.title }}</td>
+              <td>{{ task.projectName }}</td>
+              <td>{{ task.statusName }}</td>
+              <td>{{ task.teamName || '—' }}</td>
+              <td>{{ task.dueDate | date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div *ngIf="!loading && tasks.length === 0" class="text-muted">
         No tasks found

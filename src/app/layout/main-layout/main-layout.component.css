@@ -9,3 +9,10 @@
   padding: 1rem;
   overflow-x: auto;
 }
+
+.mobile-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100;
+}

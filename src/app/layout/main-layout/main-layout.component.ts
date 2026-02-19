@@ -9,4 +9,14 @@ import { SidebarComponent } from '../sidebar/sidebar';
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css']
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+  isSidebarOpen = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebar() {
+    this.isSidebarOpen = false;
+  }
+}

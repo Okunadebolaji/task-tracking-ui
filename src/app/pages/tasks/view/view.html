@@ -19,64 +19,61 @@
   </div>
 
   <!-- TASK TABLE -->
-  <table class="table table-bordered table-striped">
-    <thead class="table-light">
-      <tr>
-        <th>Module</th>
-        <th>Description</th>
-        <th>User Story</th>
-        <th>Project</th>
-        <th>Team</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th width="200">Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let t of tasks">
-        <td>{{ t.module }}</td>
-        <td>{{ t.description }}</td>
-        <td>{{ t.userStory || '-' }}</td>
-        <td>{{ t.project?.name || '-' }}</td>
-        <td>{{ t.team?.name || '-' }}</td>
-
-        <td>
-          <span class="badge" [ngClass]="statusClass(t.status)">
-            {{ t.status?.name }}
-          </span>
-        </td>
-
-        <td>
-          <span *ngFor="let u of t.assignedUsers; let last = last">
-            {{ u.fullName }}<span *ngIf="!last">, </span>
-          </span>
-          <span *ngIf="!t.assignedUsers?.length">-</span>
-        </td>
-
-        <td>
-          <button class="btn btn-sm btn-outline-primary me-1"
-                  (click)="openEditModal(t.id)">
-            Edit
-          </button>
-
-          <button class="btn btn-sm btn-outline-danger"
-                  (click)="delete(t.id)">
-            Delete
-          </button>
-        </td>
-      </tr>
-
-      <tr *ngIf="tasks.length === 0">
-        <td colspan="8" class="text-center text-muted">No tasks found</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Module</th>
+          <th>Description</th>
+          <th>User Story</th>
+          <th>Project</th>
+          <th>Team</th>
+          <th>Status</th>
+          <th>Assigned To</th>
+          <th width="200">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tasks">
+          <td>{{ t.module }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.userStory || '-' }}</td>
+          <td>{{ t.project?.name || '-' }}</td>
+          <td>{{ t.team?.name || '-' }}</td>
+          <td>
+            <span class="badge" [ngClass]="statusClass(t.status)">
+              {{ t.status?.name }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let u of t.assignedUsers; let last = last">
+              {{ u.fullName }}<span *ngIf="!last">, </span>
+            </span>
+            <span *ngIf="!t.assignedUsers?.length">-</span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-1"
+                    (click)="openEditModal(t.id)">
+              Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger"
+                    (click)="delete(t.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="tasks.length === 0">
+          <td colspan="8" class="text-center text-muted">No tasks found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- ================= EDIT MODAL ================= -->
 <div class="modal fade show d-block" *ngIf="showModal">
-  <div class="modal-dialog modal-lg">
+ <div class="modal-dialog modal-dialog-centered modal-lg">
+
     <div class="modal-content">
 
       <div class="modal-header">
@@ -87,7 +84,7 @@
       <div class="modal-body">
         <div class="row g-3">
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-12">
             <label class="form-label">Project</label>
             <select class="form-select"
                     [(ngModel)]="editForm.projectId"
@@ -98,7 +95,7 @@
             </select>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6  col-12">
             <label class="form-label">Team</label>
             <select class="form-select"
                     [(ngModel)]="editForm.teamId"
@@ -109,7 +106,7 @@
             </select>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-12">
             <label class="form-label">Assign Users</label>
             <select multiple class="form-select"
                     [(ngModel)]="editForm.assignedUserIds">
@@ -119,7 +116,8 @@
             </select>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-12">
+            
             <label class="form-label">Status</label>
             <select class="form-select" [(ngModel)]="editForm.statusId">
               <option *ngFor="let s of statuses" [ngValue]="s.id">
@@ -128,14 +126,14 @@
             </select>
           </div>
 
-          <div class="col-12">
+          <div class="col-12 col-md-6">
             <label class="form-label">User Story</label>
             <textarea class="form-control"
                       rows="3"
                       [(ngModel)]="editForm.userStory"></textarea>
           </div>
 
-          <div class="col-12">
+          <div class="col-12 col-md-6">
             <label class="form-label">Description</label>
             <textarea class="form-control"
                       rows="3"
