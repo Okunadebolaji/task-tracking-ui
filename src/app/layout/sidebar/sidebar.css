@@ -56,6 +56,16 @@
   border-radius: 8px;
 }
 
+
+/* Desktop default */
+@media (min-width: 769px) {
+  .sidebar {
+    position: relative;
+    left: 0;
+  }
+}
+
+
 @media (max-width: 768px) {
 
   .sidebar {
