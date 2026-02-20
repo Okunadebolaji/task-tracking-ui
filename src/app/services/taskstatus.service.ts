@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class TaskStatusService {
- private apiUrl = `${environment.apiUrl}/api/taskstatus;`
+ private apiUrl = `${environment.apiUrl}/api/taskstatus`
 
   constructor(private http: HttpClient) {}
 
