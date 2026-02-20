@@ -9,7 +9,7 @@
       <!-- Parent Menu -->
       <a class="nav-link text-white d-flex justify-content-between align-items-center"
          [routerLink]="!menu.children?.length ? menu.route : null"
-         (click)="menu.children?.length ? toggle(menu) : null">
+         (click)="menu.children?.length ? toggle(menu) : closeSidebar()" >
 
         <span>
           <i *ngIf="menu.icon" class="bi {{ menu.icon }} me-2"></i>

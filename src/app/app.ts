@@ -9,7 +9,7 @@ import { AuthService } from './services/auth';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, SidebarComponent],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -26,21 +26,7 @@ export class App {
       });
   }
 
- showSidebar(): boolean {
-  const hideRoutes = ['/login', '/superadmin-signup'];
 
-  // hide sidebar on exact routes
-  if (hideRoutes.includes(this.currentUrl)) {
-    return false;
-  }
-
-  //  hide sidebar on change-password with ANY id
-  if (this.currentUrl.startsWith('/change-password')) {
-    return false;
-  }
-
-  return true;
-}
 
 
    ngOnInit() {

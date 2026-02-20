@@ -1,17 +1,16 @@
-<div class="layout">
+<button class="btn btn-dark mobile-toggle d-md-none"
+        (click)="toggleSidebar()">
+  <i class="bi bi-list"></i>
+</button>
 
-  <!-- Mobile Toggle Button -->
-  <button class="mobile-toggle btn btn-dark d-lg-none"
-          (click)="toggleSidebar()">
-    <i class="bi bi-list"></i>
-  </button>
+<div class="layout">
 
   <app-sidebar
     [isOpen]="isSidebarOpen"
-    (close)="closeSidebar()">
+    (close)="closeSidebar()" *ngIf="showSidebar()">
   </app-sidebar>
 
-  <div class="content">
+  <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>
 

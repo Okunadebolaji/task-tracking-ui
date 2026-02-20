@@ -1,18 +1,22 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  width: 100%;
 }
 
-.content {
+.content-wrapper {
   flex: 1;
-  padding: 1rem;
+  padding: 1.5rem;
   overflow-x: auto;
 }
 
-.mobile-toggle {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1100;
+/* Mobile behavior */
+@media (max-width: 768px) {
+
+  .layout {
+    flex-direction: row;
+  }
+
+  .content-wrapper {
+    padding-top: 60px;
+  }
 }
